@@ -18,11 +18,12 @@ function App() {
         ) )
     };
 
+    // get saved notes if there r any
     useEffect(() => {
-        fetch("/api/get-notes")
+        fetch("/get-notes")
         .then(res => res.json())
         .then(data => {
-        setAllnotes(data.notes);
+        setAllnotes(data.data);
         });
     }, []);
 
@@ -40,7 +41,7 @@ function App() {
             <Header />
             <CreateArea addNote={addNewNote} />
             <AllNotes  notes={allNotes} deleteFunc={deleteNote}/>
-            <Save/>
+            <Save notes={allNotes}/>
             <Footer />
         </div>
     );

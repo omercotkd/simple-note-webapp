@@ -1,10 +1,13 @@
 import React from 'react';
 import SaveIcon from '@material-ui/icons/Save';
 
-const Save = () => {
+const Save = (props) => {
 
     const saveNotes = () => {
-        console.log("test");
+        const notesToSend = {
+            "data":props.notes
+        };
+        fetch("/save-notes", { method: "POST", body: JSON.stringify(notesToSend)})
     };
 
     return(
